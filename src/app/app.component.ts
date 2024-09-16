@@ -9,5 +9,6 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Navdeep-Kaur-learning-angular';
+  title:string = 'Navdeep Kaur';
+  assignment:number = 1;
 }
