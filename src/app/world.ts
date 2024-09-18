@@ -1,7 +1,7 @@
 export interface world{
   id: number;
   country : string;
-  state : string;
+  city : string;
   language : string;
   food : string;
 }
