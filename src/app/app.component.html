@@ -1,2 +1,10 @@
-<h1>{{title}}</h1>
-<p>{{assignment}}</p>
+<div class="container">
+  <h2>My Portfolio</h2>
+  <div *ngFor="let items of myPortfolio" >
+    <h3>{{item.projectTitle}}</h3>
+    <p>ID: {{item.id}}</p>
+    <p>Description : {{item.description}}</p>
+    <p>Starting-Date: {{item.startingDate}}</p>
+    <p>Ending-Date: {{item.completionDate}}</p>
+  </div>
+</div>

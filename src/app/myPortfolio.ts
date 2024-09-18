@@ -1,7 +1,7 @@
 export interface MyPortfolio{
-  firstName : string;
-  lastName : string;
-  study : string;
-  age : number;
-  address : string;
+  id: number;
+  projectTitle : string;
+  description : string;
+  startingDate : number;
+  completionDate : number;
 }
