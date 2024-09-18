@@ -1,4 +1,4 @@
-export interface MyPortfolio{
+export interface world{
   id: number;
   country : string;
   state : string;
