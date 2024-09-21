@@ -1,3 +1,5 @@
+
+
 <div>
   <table>
     <tbody>
@@ -10,6 +12,5 @@
     </tr>
     </tbody>
   </table>
-  <app-world-list-item [item]="selectedWorldItem"></app-world-list-item>
+  <app-world-list-item *ngFor="let item of worldItems" [item]="item"></app-world-list-item>
 </div>
-
