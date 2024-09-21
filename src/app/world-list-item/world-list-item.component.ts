@@ -18,5 +18,5 @@ export class WorldListItemComponent {
    * that can receive data from a parent
    * ? says it is optional
    */
-  @input item?: any;
+  @Input() item: any;
 }

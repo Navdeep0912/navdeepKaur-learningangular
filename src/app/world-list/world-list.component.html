@@ -1,6 +1,14 @@
-<h2>World Information</h2>
-<app-world-list-item></app-world-list-item>
-<app-world-list-item></app-world-list-item>
-<app-world-list-item></app-world-list-item>
-<app-world-list-item></app-world-list-item>
-
+<div>
+  <table>
+    <tbody>
+    <tr *ngFor="let item of worldItems" (click)="selectWorldItem(item)">
+      <td>{{ item.id }}</td>
+      <td>{{ item.country }}</td>
+      <td>{{ item.capital }}</td>
+      <td>{{ item.language }}</td>
+      <td>{{ item.landmark }}</td>
+    </tr>
+    </tbody>
+  </table>
+  <app-world-list-item [item]="selectedWorldItem"></app-world-list-item>
+</div>

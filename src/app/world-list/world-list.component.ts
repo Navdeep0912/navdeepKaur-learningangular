@@ -20,5 +20,12 @@ export class WorldListComponent {
     {id:3, country:'Brazil', capital: 'Brasilia', language:'Portuguese', landmark:'Christ the Redeemer' },
     {id:4, country:'Egypt', capital: 'Cairo', language:'Arabic', landmark:'Pyramids of Giza' },
   ]
+
+  selectedWorldItem : any ;
+
+  selectWorldItem(item : any) {
+    this.selectedWorldItem = item;
+  }
+
 }
 
