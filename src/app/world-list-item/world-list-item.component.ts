@@ -1,4 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
+let input = Input();
+
+
+
 
 @Component({
   selector: 'app-world-list-item',
@@ -8,5 +13,10 @@ import { Component } from '@angular/core';
   styleUrl: './world-list-item.component.css'
 })
 export class WorldListItemComponent {
-
+  /**
+   * Input marks the property as an input property
+   * that can receive data from a parent
+   * ? says it is optional
+   */
+  @input item?: any;
 }
