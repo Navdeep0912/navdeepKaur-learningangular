@@ -41,6 +41,4 @@ constructor() { }
   return of(content);
   }
 
-
-
 }
