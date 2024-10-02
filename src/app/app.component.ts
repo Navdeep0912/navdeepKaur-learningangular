@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {world} from "./world";
+import {world} from "../Shared/Models/world";
 import {NgForOf} from "@angular/common";
 import {WorldListComponent} from "./world-list/world-list.component";
 
@@ -12,7 +12,7 @@ import {WorldListComponent} from "./world-list/world-list.component";
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title= 'World Data';
+  title= 'World Models';
 
   worldData : world [] = [
     {id:1, country:"India", city:"New Delhi",language:"Hindi", food:"Jalebi" },

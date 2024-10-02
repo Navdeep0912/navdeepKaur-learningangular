@@ -1,14 +1,13 @@
-<div>
-  <table>
-    <tbody>
-    <tr *ngFor="let item of worldItems" (click)="selectWorldItem(item)">
-      <td>{{ item.id }}</td>
-      <td>{{ item.country }}</td>
-      <td>{{ item.capital }}</td>
-      <td>{{ item.language }}</td>
-      <td>{{ item.landmark }}</td>
-    </tr>
-    </tbody>
-  </table>
-  <app-world-list-item *ngFor="let item of worldItems" [item]="item"></app-world-list-item>
+
+<div *ngFor="let item of worldItems" (click)="selectWorldItem(item)">
+  <app-world-list-item></app-world-list-item>
+</div>
+
+<!-- Optionally display the selected world item -->
+<div *ngIf="selectedWorldItem">
+  <h3>Selected Item:</h3>
+  <p>Country: {{ selectedWorldItem["country"] }}</p>
+  <p>Capital: {{ selectedWorldItem["capital"] }}</p>
+  <p>Language: {{ selectedWorldItem["language"] }}</p>
+  <p>Landmark: {{ selectedWorldItem["landmark"] }}</p>
 </div>

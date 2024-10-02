@@ -1,30 +1,40 @@
-import { Component } from '@angular/core';
-import {NgForOf} from "@angular/common";
-import {WorldListItemComponent} from "../world-list-item/world-list-item.component";
+import { Component, OnInit } from '@angular/core';
+// @ts-ignore
+import {world} from "./Models/world";
+import { NgForOf, NgIf } from "@angular/common";
+import { WorldListItemComponent } from "../world-list-item/world-list-item.component";
+import { WorldInformationService } from "../services/world-information.service";
 
 @Component({
   selector: 'app-world-list',
   standalone: true,
   imports: [
     NgForOf,
-    WorldListItemComponent
+    WorldListItemComponent,
+    NgIf
   ],
   templateUrl: './world-list.component.html',
-  styleUrl: './world-list.component.css'
+  styleUrls: ['./world-list.component.css'] // Corrected to styleUrls from styleUrl
 })
-export class WorldListComponent {
+export class WorldListComponent implements OnInit {
 
-  worldItems = [
-    {id:1, country:'Japan', capital: 'Tokyo', language:'Japanese', landmark:'Mount Fuji' },
-    {id:2, country:'France', capital: 'Paris', language:'French', landmark:'Eiffel Tower' },
-    {id:3, country:'Brazil', capital: 'Brasilia', language:'Portuguese', landmark:'Christ the Redeemer' },
-    {id:4, country:'Egypt', capital: 'Cairo', language:'Arabic', landmark:'Pyramids of Giza' },
-  ]
-  selectedWorldItem : any ;
+  worldItems: world[] = [];
+  selectedWorldItem?: world;
 
-  selectWorldItem(item : any) {
-    this.selectedWorldItem = item;
-    }
+  constructor(private worldInformationService: WorldInformationService) {
+  }
 
+  ngOnInit() {
+    this.worldInformationService.getAllContent().subscribe({
+      next: (data: world[]) => this.worldItems = data,
+      error: err => {
+        console.error("Error fetching world items", err);
+      },
+      complete: () => console.log("World data fetch complete!")
+    });
+  }
+
+  selectWorldItem(worldItem: world): void {
+    this.selectedWorldItem = worldItem;
+  }
 }
-
