@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {world} from "./Models/world";
 import { NgForOf, NgIf } from "@angular/common";
 import { WorldListItemComponent } from "../world-list-item/world-list-item.component";
-import { WorldInformationService } from "../services/world-information.service";
+import { WorldInformationService } from "../../Services/world-information.service";
 
 @Component({
   selector: 'app-world-list',
