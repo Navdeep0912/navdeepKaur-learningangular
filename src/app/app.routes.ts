@@ -1,3 +1,4 @@
-import { Routes } from '@angular/router';
+// @ts-ignore
+import { Routes } from "@angular/router";
 
 export const routes: Routes = [];

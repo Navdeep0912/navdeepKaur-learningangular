@@ -1,2 +1,14 @@
-<h1>{{ title }}</h1>
-<app-world-list></app-world-list>
+<!-- Future Nav bar-->
+<div class="nav-bar">
+  <nav>
+    <a routerLink="/world" routerLinkActive="active">World List</a>
+    <a routerLink="/modify-list" routerLinkActive="active">Modify World List</a>
+  </nav>
+</div>
+
+<div class="app-container">
+  <h1>{{ title }}</h1>
+
+  <!--router outlet to display routed components -->
+  <router-outlet></router-outlet>
+</div>

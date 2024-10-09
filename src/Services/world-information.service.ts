@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 // @ts-ignore
-import {worldList} from "./Shared/mockContent.ts";
+import {worldList} from "./Shared/mockContent.data";
 import {Observable, of} from "rxjs";
 // @ts-ignore
 import {world} from './Model/world';
