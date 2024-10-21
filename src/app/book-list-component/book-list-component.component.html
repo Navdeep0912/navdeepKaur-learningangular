@@ -1,0 +1,9 @@
+<ul>
+  <li *ngFor="let books of book">
+    <a (click)="onSelect(book.id)">
+      {{book.name}} by {{book.author}} ({{book.publishedYear}}
+    </a>
+  </li>
+</ul>
+
+<app-book-detail-component [book]="selectedBook"></app-book-detail-component>

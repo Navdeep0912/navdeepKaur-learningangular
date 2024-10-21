@@ -9,6 +9,6 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title:string = 'Navdeep Kaur';
-  assignment:number = 1;
+  title = 'User Generation;'
+  BookList: any;
 }
