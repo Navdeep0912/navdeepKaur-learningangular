@@ -1,28 +1,32 @@
-import {bootstrapApplication } from '@angular/platform-browser';
-import {provideRouter} from './@angular/router';
+import { bootstrapApplication } from '@angular/platform-browser';
+// @ts-ignore
+import { provideRouter, Routes } from './@angular/routes';
 import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
-import{WorldListComponent} from "./app/world-list/world-list.component";
-import {WorldListItemComponent} from "./app/world-list-item/world-list-item.component";
-import {PageNotFoundComponent} from "./app/page-not-found/page-not-found.component";
-import {ModifyListItemComponent} from "./app/modify-list-item/modify-list-item.component";
+import { WorldDetailComponent } from "./app/world-detail/world-detail.component";
+import { WorldListComponent } from "./app/world-list/world-list.component";
+import { ModifyWorldComponent } from "./app/modify-world/modify-world.component";
+import { PageNotFoundComponent } from "./app/page-not-found/page-not-found.component";
+// @ts-ignore
+import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
+// @ts-ignore
+import { InMemoryDataService } from "./app/Services/in-memory-data.service";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
+import { importProvidersFrom } from "@angular/core";
 
-
-interface Routes {
-}
 
 const routes: Routes = [
-  {path:'',redirectTo: '/world', pathMatch: 'full'},
-  {path:'world', component:'WorldListComponent'},
-  {path:'world/:id', component: 'WorldListItemComponent'},
-  {path:'modify-list-item', component: 'ModifyListItemComponent'},
-  {path: '**', component:PageNotFoundComponent}
+  { path: '', redirectTo: '/worlds', pathMatch: 'full' },
+  { path: 'worlds', component: WorldListComponent },
+  { path: 'worlds/:id', component: WorldDetailComponent },
+  { path: 'modify-world', component: ModifyWorldComponent },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
-
-// @ts-ignore
-bootstrapApplication(AppComponent,
-  {
-    providers: [provideRouter(routes)]
-  }).then(r => console.log('Bootstrap successful'));
-
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideHttpClient(),
+    provideRouter(routes),
+    importProvidersFrom(HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 1000 })) // Import providers dynamically
+  ],
+}).catch((err) => console.error(err));

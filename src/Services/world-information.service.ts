@@ -40,4 +40,8 @@ export class WorldInformationService {
     const content = this.contentList.find(item => item.id === contenId);
     return of(content);
   }
+
+  generateNewId() {
+    return 0;
+  }
 }
