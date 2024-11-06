@@ -1,0 +1,9 @@
+<div *ngIf="worldList" class="world-detail">
+  <h2>World Item Details</h2>
+  <p><strong>ID:</strong> {{ worldList.id }}</p>
+  <p><strong>Country:</strong> {{ worldList.country }}</p>
+  <p><strong>City:</strong> {{ worldIList.city }}</p>
+  <p><strong>Language:</strong> {{ worldList.language }}</p>
+  <p><strong>Food:</strong> {{ worldList.food }}</p>
+</div>
+<div *ngIf="error" class="error">{{ error }}</div>

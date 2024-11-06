@@ -1,0 +1,18 @@
+<h2>Modify World</h2>
+<form [formGroup]="worldForm" (ngSubmit)="onSubmit()">
+  <label for="country">Country:</label>
+  <input id="country" formControlName="country" required />
+
+  <label for="city">City:</label>
+  <input id="city" formControlName="city" required />
+
+  <label for="language">Language:</label>
+  <input id="language" formControlName="language" required />
+
+  <label for="food">Food:</label>
+  <input id="food" formControlName="food" required />
+
+  <button type="submit">Save</button>
+  <button type="button" (click)="onDelete()">Delete</button>
+  <button type="button" (click)="navigateToWorldList()">Cancel</button>
+</form>

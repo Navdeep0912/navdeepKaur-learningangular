@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World List</title>
+</head>
+
+<body>
+<div class="container">
+  <h2>World List</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Country</th>
+      <th>City</th>
+      <th>Language</th>
+      <th>Food</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of worldList">
+      <td>{{ item["id"] }}</td>
+      <td>{{ item["country"] }}</td>
+      <td>{{ item["city"] }}</td>
+      <td>{{ item["language"] }}</td>
+      <td>{{ item["food"] }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="error" class="error">{{ error }}</div>
+</body>
+
+</html>
