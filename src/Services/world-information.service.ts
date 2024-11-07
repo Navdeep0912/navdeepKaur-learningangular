@@ -1,47 +1,48 @@
 import { Injectable } from '@angular/core';
-
-// @ts-ignore
-import {worldList} from "./Shared/mockContent.data";
-import {Observable, of} from "rxjs";
-// @ts-ignore
-import {world} from './Model/world';
-
+import { Observable, of, throwError } from "rxjs";
+import { catchError } from "rxjs/operators";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { world } from './Model/world';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WorldInformationService {
-  private contentList: world[] = worldList;
-  constructor() { }
-  getAllContent(): Observable<world>{
-    return of(this.contentList);
+  private apiUrl = 'api/worldList';
+  private contentList: world[] = [];
+
+  constructor(private http: HttpClient) { }
+
+  // CRUD operations using HTTP Requests
+  getAllContent(): Observable<world[]> {
+    return this.http.get<world[]>(this.apiUrl).pipe(catchError(this.handleError));
   }
 
-  addContent(newContent: world): Observable<worldList[]>{
-    this.contentList.push(newContent);
-    return of(this.contentList);
+  getContentById(contentId: number): Observable<world | undefined> {
+    return this.http.get<world>(`${this.apiUrl}/${contentId}`).pipe(catchError(this.handleError));
   }
 
-  updateContent(updatedContent: world) : Observable<worldList[]>{
-    // @ts-ignore
-    if(index !== -1){
-      // @ts-ignore
-      this.contentList[index] = updatedContent;
-    }
-    return of(this.contentList);
-  }
-  deleteContent(contentId: number): Observable<world[]>{
-    this.contentList = this.contentList.filter(item => item.id !== contentId);
-    return of (this.contentList);
+  addContent(newContent: world): Observable<world> {
+    newContent.id = this.generateNewId();
+    return this.http.post<world>(this.apiUrl, newContent).pipe(catchError(this.handleError));
   }
 
-  getContentById(contentId: number): Observable<world| undefined>{
-    // @ts-ignore
-    const content = this.contentList.find(item => item.id === contenId);
-    return of(content);
+  updateContent(updatedContent: world): Observable<world | undefined> {
+    const url = `${this.apiUrl}/${updatedContent.id}`;
+    return this.http.put<world>(url, updatedContent).pipe(catchError(this.handleError));
   }
 
-  generateNewId() {
-    return 0;
+  deleteContent(contentId: number): Observable<{}> {
+    const url = `${this.apiUrl}/${contentId}`;
+    return this.http.delete(url).pipe(catchError(this.handleError));
+  }
+
+  //ID
+  private generateNewId(): number {
+    return this.contentList.length > 0 ? Math.max(...this.contentList.map(content => content.id)) + 1 : 1;
+  }
+  private handleError(error: HttpErrorResponse) {
+    console.error('API error:', error);
+    return throwError(() => new Error('Server error, please try again.'));
   }
 }
