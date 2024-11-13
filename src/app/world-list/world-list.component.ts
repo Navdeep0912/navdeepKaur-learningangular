@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForOf, NgIf } from "@angular/common";
+// @ts-ignore
 import { WorldInformationService } from "../Services/world-information.service";
-import { worldItem } from "../../Model/worldItem";
+// @ts-ignore
+import {worldItem} from "../Shared/Models/worldItem";
 
 @Component({
   selector: 'app-world-list',
@@ -22,6 +24,7 @@ export class WorldListComponent implements OnInit {
   }
 
   ngOnInit() {
+    // @ts-ignore
     this.worldService.getContent().subscribe({
       next: (data: worldItem[]) => {
         this.worldList = data;
@@ -29,7 +32,7 @@ export class WorldListComponent implements OnInit {
       },
       error: err => {
         this.error = 'Error fetching world data';
-        console.error("Error fetching world data", err);
+        console.error({err: "Error fetching world data"}, err);
       },
       complete: () => console.log("World data fetch complete!")
     });

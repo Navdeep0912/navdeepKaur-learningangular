@@ -1,5 +1,7 @@
 
-import { WorldItem } from './Models/world';
+// @ts-ignore
+import {WorldItem} from "./Models/worldItem";
+
 
 export const worldList: WorldItem[] = [
   { id: 1, country: "Canada", city: "Toronto", language: "English", food: "Poutine" },

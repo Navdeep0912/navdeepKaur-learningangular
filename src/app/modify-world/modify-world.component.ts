@@ -50,7 +50,7 @@ export class ModifyWorldComponent implements OnInit{
         },
         error: err => {
           this.error = "Error fetching world item";
-          console.error({err: 'Error fetching world item:'}, err);
+          console.error({err: {err: 'Error fetching world item:'}}, err);
         }
       });
     }

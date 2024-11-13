@@ -35,7 +35,7 @@ export class WorldDetailComponent implements OnInit {
     this.worldService.getWorldItems().subscribe({
       error: ({err}: { err: any }) => {
         this.error = 'Error fetching world items';
-        console.error({err: 'Error fetching world items:'}, err);
+        console.error({err: {err: 'Error fetching world items:'}}, err);
       },
       next: (items: WorldItem[]) => {
         this.worldList = items;

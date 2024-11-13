@@ -29,4 +29,4 @@ bootstrapApplication(AppComponent, {
     provideRouter(routes),
     importProvidersFrom(HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 1000 })) // Import providers dynamically
   ],
-}).catch((err) => console.error(err));
+}).catch((err) => console.error({err: err}));
