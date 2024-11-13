@@ -12,3 +12,4 @@ export class WorldItemNamePipe implements PipeTransform {
     return `${worldItem.city}, ${worldItem.country}`;
   }
 }
+
