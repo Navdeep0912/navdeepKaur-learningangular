@@ -1,45 +1,49 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForOf, NgIf } from "@angular/common";
+import { CurrencyPipe, NgForOf, NgIf, UpperCasePipe } from "@angular/common";
 // @ts-ignore
-import { WorldInformationService } from "../Services/world-information.service";
-// @ts-ignore
-import {worldItem} from "../Shared/Models/worldItem";
+import { RouterLink } from "@angular/router";
+import {WorldItemDetailComponent} from "../world-detail/world-detail.component";
+import { worldItem } from '../../Shared/Models/worldItem';
 
 @Component({
-  selector: 'app-world-list',
+  selector: 'app-world-item-list',
   standalone: true,
   imports: [
     NgForOf,
-    NgIf
+    WorldItemDetailComponent,
+    RouterLink,
+    NgIf,
+    CurrencyPipe,
+    UpperCasePipe
   ],
-  templateUrl: './world-list.component.html',
-  styleUrls: ['./world-list.component.css']
+  templateUrl: './world-item-list.component.html',
+  styleUrl: './world-item-list.component.scss'
 })
-export class WorldListComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'country', 'city', 'language', 'food'];
-  worldList: worldItem[] = [];
+export class WorldItemListComponent implements OnInit {
+  displayedColumns: string[] = ['id', 'country', 'city', 'language', 'game', 'food'];
+  worldItemList: worldItem[] = [];
   error: string | null = null;
 
-  constructor(private worldService: WorldInformationService) {
+  // @ts-ignore
+  constructor(private worldIInformationService: worldInformationService) {
   }
 
   ngOnInit() {
-    // @ts-ignore
-    this.worldService.getContent().subscribe({
+    this.worldIInformationService.getWorldItems().subscribe({
+      complete: () => console.log("World item data fetch complete!"),
+      error: e => {
+        this.error = 'Error fetching world items';
+        console.error({e: "Error fetching World Items"}, e);
+      },
       next: (data: worldItem[]) => {
-        this.worldList = data;
+        this.worldItemList = data;
         this.error = null;
-      },
-      error: err => {
-        this.error = 'Error fetching world data';
-        console.error({err: "Error fetching world data"}, err);
-      },
-      complete: () => console.log("World data fetch complete!")
+      }
     });
   }
 
   selectedWorldItem?: worldItem;
-  selectWorldItem(worldItems: worldItem): void {
-    this.selectedWorldItem = worldItems;
+  selectWorldItem(worldItem: worldItem): void {
+    this.selectedWorldItem = worldItem;
   }
 }

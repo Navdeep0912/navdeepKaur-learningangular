@@ -1,18 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WorldDetailComponent } from './world-detail.component';
+// @ts-ignore
+import { worldDetailComponent } from './world-detail.component';
 
 describe('WorldDetailComponent', () => {
-  let component: WorldDetailComponent;
-  let fixture: ComponentFixture<WorldDetailComponent>;
+  let component: worldDetailComponent;
+  let fixture: ComponentFixture<worldDetailComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [WorldDetailComponent]
+      imports: [worldDetailComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(WorldDetailComponent);
+    fixture = TestBed.createComponent(worldDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

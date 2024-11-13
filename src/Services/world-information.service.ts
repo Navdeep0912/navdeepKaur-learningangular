@@ -38,11 +38,11 @@ export class WorldInformationService {
     return this.http.delete(url).pipe(catchError(this.handleError));
   }
 
-  private generateNewId(): number {
+  generateNewId(): number {
     return this.worldItem.length > 0 ? Math.max(...this.worldItem.map(worldItem => worldItem.id)) + 1 : 1;
   }
   private handleError(error: HttpErrorResponse) {
-    console.error({err: 'API error:'}, error);
+    console.error({err: {err: 'API error:'}}, error);
     return throwError(() => new Error('Server error, please try again.'));
   }
 }

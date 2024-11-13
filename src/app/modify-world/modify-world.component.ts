@@ -50,7 +50,7 @@ export class ModifyWorldComponent implements OnInit{
         },
         error: err => {
           this.error = "Error fetching world item";
-          console.error({err: {err: 'Error fetching world item:'}}, err);
+          console.error({err: {err: {err: 'Error fetching world item:'}}}, err);
         }
       });
     }
@@ -69,7 +69,7 @@ navigateToWorldList (): void{
   onDelete() : void {
     const id = this.worldForm.value.id;
     if (id) {
-      this.worldService.deleteContent(id).subscribe(() => this.router.navigate(['/world-list']));
+      this.worldService.deleteItem(id).subscribe(() => this.router.navigate(['/world-list']));
     }
   }
 
@@ -78,10 +78,10 @@ navigateToWorldList (): void{
       const worldItem : world = this.worldForm.value;
 
       if(worldItem.id){
-        this.worldService.updateContent(worldItem).subscribe(()=> this.router.navigate(['/world-list']));
+        this.worldService.addItem(worldItem).subscribe(()=> this.router.navigate(['/world-list']));
       } else {
         worldItem.id = this.worldService.generateNewId();
-        this.worldService.addContent(worldItem).subscribe(() => this.router.navigate(['/world-list']));
+        this.worldService.addItem(worldItem).subscribe(() => this.router.navigate(['/world-list']));
       }
     }
 
