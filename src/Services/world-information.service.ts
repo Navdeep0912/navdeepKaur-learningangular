@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import {worldItem} from "../Shared/Models/worldItem";
+import { worldItem } from '../Shared/Models/worldItem';
+
 
 @Injectable({
   providedIn: 'root'
