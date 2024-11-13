@@ -8,7 +8,7 @@ import {worldList} from "../../Shared/mockContent";
 })
 export class WorldItemNamePipe implements PipeTransform {
 
-  transform(worldItem : worldItem){
+  transform(worldItem: worldItem) {
     return `${worldItem.city}, ${worldItem.country}`;
   }
 }
