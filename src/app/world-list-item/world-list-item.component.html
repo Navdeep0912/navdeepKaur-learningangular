@@ -1,6 +1,7 @@
-<div class="world-item" style="border: 2px solid orange; padding: 10px; margin:10px;" >
-  <h3>{{item?.country}}</h3>
-  <p>{{item?.capital}}</p>
+<div *ngIf="item" class="world-item" style="border: 2px solid orange; padding: 10px; margin:10px;" >
+  <h3>{{item.id}}</h3>
+  <p>{{item.country}}</p>
+  <p>{{item.city}}</p>
   <p>{{item.language}}</p>
-  <p>{{item.landmark}}</p>
+  <p>{{item.food}}</p>
 </div>

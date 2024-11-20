@@ -1,11 +1,7 @@
 import { Injectable } from '@angular/core';
-
-// @ts-ignore
-import {worldList} from "./Shared/mockContent.ts";
 import {Observable, of} from "rxjs";
-// @ts-ignore
-import {world} from './Model/world';
-
+import {world} from "../../Shared/Models/world";
+import {worldList} from "../../Shared/mockContent";
 
 @Injectable({
   providedIn: 'root'
@@ -13,22 +9,22 @@ import {world} from './Model/world';
 export class WorldInformationService {
   private contentList: world[] = worldList;
   constructor() { }
-  getAllContent(): Observable<world>{
+  getAllContent(): Observable<world[]>{
     return of(this.contentList);
   }
 
-  addContent(newContent: world): Observable<worldList[]>{
+  addContent(newContent: world): Observable<world>{
     this.contentList.push(newContent);
-    return of(this.contentList);
+    return of(newContent);
   }
 
-  updateContent(updatedContent: world) : Observable<worldList[]>{
-    // @ts-ignore
-    if(index !== -1){
-      // @ts-ignore
+  updateContent(updatedContent: world) : Observable<world | undefined>{
+    const index = this.contentList.findIndex(content => content.id === updatedContent.id)
+    if(index > -1){
       this.contentList[index] = updatedContent;
+      return of(updatedContent)
     }
-    return of(this.contentList);
+    return of(undefined);
   }
   deleteContent(contentId: number): Observable<world[]>{
     this.contentList = this.contentList.filter(item => item.id !== contentId);
@@ -36,8 +32,6 @@ export class WorldInformationService {
   }
 
   getContentById(contentId: number): Observable<world| undefined>{
-    // @ts-ignore
-    const content = this.contentList.find(item => item.id === contenId);
-    return of(content);
+    return of(this.contentList.find(content => content.id === contentId));
   }
 }
