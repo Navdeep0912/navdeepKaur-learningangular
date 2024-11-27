@@ -1,9 +1,11 @@
+
 import { Component, OnInit } from '@angular/core';
-// @ts-ignore
-import {world} from "./Models/world";
+
+import {world} from "../../Shared/Models/world";
 import { NgForOf, NgIf } from "@angular/common";
 import { WorldListItemComponent } from "../world-list-item/world-list-item.component";
-import { WorldInformationService } from "../../Services/world-information.service";
+import { WorldInformationService } from "../Services/world-information.service";
+import {worldList} from "../../Shared/mockContent";
 
 @Component({
   selector: 'app-world-list',
@@ -14,7 +16,7 @@ import { WorldInformationService } from "../../Services/world-information.servic
     NgIf
   ],
   templateUrl: './world-list.component.html',
-  styleUrls: ['./world-list.component.css'] // Corrected to styleUrls from styleUrl
+  styleUrls: ['./world-list.component.css']
 })
 export class WorldListComponent implements OnInit {
 
@@ -30,9 +32,12 @@ export class WorldListComponent implements OnInit {
       error: err => {
         console.error("Error fetching world items", err);
       },
-      complete: () => console.log("World data fetch complete!")
+      complete: () => console.log("Data Fetch Complete" + this.worldItems ),
+
+
     });
   }
+
 
   selectWorldItem(worldItem: world): void {
     this.selectedWorldItem = worldItem;

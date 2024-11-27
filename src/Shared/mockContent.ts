@@ -1,3 +1,4 @@
+
 import {world} from './Models/world';
 export const worldList: world[] = [
   {id:1, country:"India", city:"New Delhi",language:"Hindi", food:"Jalebi" },
@@ -6,4 +7,4 @@ export const worldList: world[] = [
   {id:4, country:"Pakistan", city :"Lahore",language:"Urdu", food:"Nihari" },
   {id:5, country:"Dubai", city:"Abu dhabi",language:"Arabic", food:"Khuzi" },
   {id:6, country:"England", city:"London",language:"British English", food:"Pudding" },
-  ];
+];

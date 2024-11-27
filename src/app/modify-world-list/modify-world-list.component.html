@@ -1,0 +1,41 @@
+<!-- modify-student.component.html -->
+<form [formGroup]="worldList" (ngSubmit)="onSubmit()">
+  <!-- ID Field -->
+  <div class="form-group">
+    <label for="id">ID</label>
+    <input type="number" id="id" formControlName="id" />
+  </div>
+
+  <!-- Country Name Field -->
+  <div class="form-group">
+    <label for="country">Country Name</label>
+    <input type="text" id="country" formControlName="country" />
+  </div>
+
+  <!-- City Name Field -->
+  <div class="form-group">
+    <label for="city">City Name</label>
+    <input type="text" id="city" formControlName="city" />
+  </div>
+
+  <!-- Language -->
+  <div class="form-group">
+    <label for="language">Language</label>
+    <input type="text" id="language" formControlName="language" />
+  </div>
+
+  <!-- Food Name -->
+  <div class="form-group">
+    <label for="food">Food</label>
+    <input type="text" id="food" formControlName="food" />
+  </div>
+
+  <!-- Submit Button (Add or Update) -->
+  <button type="submit">Submit</button>
+
+  <!-- Delete Button (Always Displayed Now) -->
+  <button type="button" (click)="onDelete()">Delete</button>
+
+  <!-- Back Button -->
+  <button type="button" (click)="navigateToWorldList()">Back to List</button>
+</form>

@@ -1,9 +1,6 @@
 import { Component, Input } from '@angular/core';
 import {NgClass, NgForOf, NgIf} from "@angular/common";
 
-let input = Input();
-
-
 
 
 @Component({
