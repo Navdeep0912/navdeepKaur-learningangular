@@ -4,4 +4,5 @@ export interface world{
   city : string;
   language : string;
   food : string;
+
 }

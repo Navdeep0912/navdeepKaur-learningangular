@@ -7,31 +7,35 @@ import {worldList} from "../../Shared/mockContent";
   providedIn: 'root'
 })
 export class WorldInformationService {
-  private contentList: world[] = worldList;
+  private worldList : world[] = worldList;
   constructor() { }
   getAllContent(): Observable<world[]>{
-    return of(this.contentList);
+    return of(this.worldList);
   }
 
-  addContent(newContent: world): Observable<world>{
-    this.contentList.push(newContent);
-    return of(newContent);
+  addWorldInformation(newInformation: world): Observable<world>{
+    this.worldList.push(newInformation);
+    return of(newInformation);
   }
 
-  updateContent(updatedContent: world) : Observable<world | undefined>{
-    const index = this.contentList.findIndex(content => content.id === updatedContent.id)
+  updateWorldInformation(updatedInformation: world) : Observable<world | undefined>{
+    const index = this.worldList.findIndex(worldList => worldList.id === updatedInformation.id)
     if(index > -1){
-      this.contentList[index] = updatedContent;
-      return of(updatedContent)
+      this.worldList[index] = updatedInformation;
+      return of(updatedInformation)
     }
     return of(undefined);
   }
-  deleteContent(contentId: number): Observable<world[]>{
-    this.contentList = this.contentList.filter(item => item.id !== contentId);
-    return of (this.contentList);
+  deleteWorldInformation( InformationId: number): Observable<world[]>{
+    this.worldList = this.worldList.filter(item => item.id !== InformationId);
+    return of (this.worldList);
   }
 
-  getContentById(contentId: number): Observable<world| undefined>{
-    return of(this.contentList.find(content => content.id === contentId));
+  getWorldInformationById(InformationId: number): Observable<world| undefined>{
+    return of(this.worldList.find(worldList => worldList.id === InformationId));
+  }
+
+  generateNewId() {
+
   }
 }
